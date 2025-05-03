@@ -3,6 +3,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @AUTHOR : Dinusha Ariyarathna
  * @DATE : 5/2/2025
@@ -35,4 +38,13 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;  // Owner of the post
+
+    @ManyToMany
+    @JoinTable(
+            name = "post_tags",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    @Builder.Default
+    private Set<Tag> tags = new HashSet<>();
 }
