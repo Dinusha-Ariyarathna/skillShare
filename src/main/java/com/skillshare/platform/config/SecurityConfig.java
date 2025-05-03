@@ -34,6 +34,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/**").authenticated() // restrict creation
                         .requestMatchers(HttpMethod.DELETE, "/api/**").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/api/**").authenticated()
+                        .requestMatchers(HttpMethod.GET,  "/api/plans/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/plans").authenticated()
+                        .requestMatchers(HttpMethod.PUT,  "/api/plans/**").authenticated()
+                        .requestMatchers(HttpMethod.DELETE,"/api/plans/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2
