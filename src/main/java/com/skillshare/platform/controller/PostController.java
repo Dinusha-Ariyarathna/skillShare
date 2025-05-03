@@ -36,4 +36,20 @@ public class PostController {
     public List<Post> getAllPosts() {
         return postService.getAllPosts();
     }
+
+    @PutMapping("/{postId}")
+    public Post updatePost(@PathVariable Long postId,
+                           @RequestBody PostDTO postDTO,
+                           @AuthenticationPrincipal OAuth2User principal) {
+        return postService.updatePost(postId, postDTO, principal);
+    }
+
+    @DeleteMapping("/{postId}")
+    public String deletePost(@PathVariable Long postId,
+                             @AuthenticationPrincipal OAuth2User principal) {
+        postService.deletePost(postId, principal);
+        return "Post deleted successfully.";
+    }
+
+
 }

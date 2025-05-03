@@ -1,5 +1,6 @@
 package com.skillshare.platform;
 
+import com.skillshare.platform.dto.PostDTO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
