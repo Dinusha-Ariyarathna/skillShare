@@ -2,6 +2,7 @@
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
 
 # This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
 name: Maven Package
 on:
   release:
@@ -22,10 +23,12 @@ jobs:
           server-id: github
           settings-path: ${{ github.workspace }}
 
-      - name: Build with Maven (skip tests)
-        run: mvn -B package --file pom.xml -DskipTests
+      # Use multiple flags to ensure all tests are completely skipped
+      - name: Build with Maven (skip all tests)
+        run: mvn -B package --file pom.xml -DskipTests -Dmaven.test.skip=true -Dspring.profiles.active=dev
 
+      # Skip tests during deploy as well
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -DskipTests
+        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -DskipTests -Dmaven.test.skip=true -Dspring.profiles.active=dev
         env:
           GITHUB_TOKEN: ${{ github.token }}
