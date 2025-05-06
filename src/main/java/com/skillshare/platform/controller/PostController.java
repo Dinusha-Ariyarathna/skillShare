@@ -48,7 +48,7 @@ public class PostController {
     public String deletePost(@PathVariable Long postId,
                              @AuthenticationPrincipal OAuth2User principal) {
         postService.deletePost(postId, principal);
-        return "Post deleted successfully!.";
+        return "Post deleted successfully!!.";
     }
 
 
