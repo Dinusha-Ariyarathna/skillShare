@@ -116,5 +116,11 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<distributionManagement>
+		<repository>
+			<id>github</id>  <!-- This must match server-id in workflow -->
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/Dinusha-Ariyarathna/skillShare</url>
+		</repository>
+	</distributionManagement>
 </project>
