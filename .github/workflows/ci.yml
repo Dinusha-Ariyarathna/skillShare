@@ -42,7 +42,7 @@ jobs:
       # 5. Upload the built JAR as an artifact
       - name: Upload JAR artifact
         if: success()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: backend-jar
           path: target/*.jar
